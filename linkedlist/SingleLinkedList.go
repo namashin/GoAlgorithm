@@ -123,10 +123,10 @@ func (sl *SingleLinkedList) ReverseIterative() {
 }
 
 func (sl *SingleLinkedList) ReverseRecursive() {
-	sl.head = reverseRecursive(sl.head, nil)
+	sl.head = sl.reverseRecursive(sl.head, nil)
 }
 
-func reverseRecursive(current *Node, previous *Node) *Node {
+func (sl *SingleLinkedList) reverseRecursive(current *Node, previous *Node) *Node {
 	if current == nil {
 		return previous
 	}
@@ -136,7 +136,7 @@ func reverseRecursive(current *Node, previous *Node) *Node {
 	previous = current
 	current = nextNode
 
-	return reverseRecursive(current, previous)
+	return sl.reverseRecursive(current, previous)
 
 }
 
