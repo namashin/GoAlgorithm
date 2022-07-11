@@ -49,6 +49,22 @@ func (sl SingleLinkedList) Print() {
 	}
 }
 
+func (sl *SingleLinkedList) Size() int {
+	size := 0
+	var current *Node = sl.head
+
+	for {
+		if current == nil {
+			break
+		}
+
+		current = current.next
+		size += 1
+	}
+
+	return size
+}
+
 func (sl *SingleLinkedList) Insert(insertValue int) {
 	var newNode *Node = &Node{value: insertValue, next: nil}
 

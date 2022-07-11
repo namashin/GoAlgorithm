@@ -204,3 +204,23 @@ func TestSingleLinkedList_SortMyself(t *testing.T) {
 	// watch values
 	l.Print()
 }
+
+func TestSingleLinkedList_Size(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+	l.Append(6)
+	l.Append(1)
+	l.Append(9)
+	l.Append(4)
+	l.Append(7)
+	l.Append(3)
+
+	// Execution
+	got := l.Size()
+
+	// Test
+	assert.Equal(t, 6, got)
+
+	// watch values
+	l.Print()
+}
