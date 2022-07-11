@@ -1,4 +1,4 @@
-package binarySearchTree
+package binary_search_tree
 
 import (
 	"github.com/stretchr/testify/assert"
