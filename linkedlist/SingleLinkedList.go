@@ -20,7 +20,7 @@ func NewSingleLinkedList() *SingleLinkedList {
 }
 
 func (sl *SingleLinkedList) Append(appendValue int) {
-	var newNode *Node = &Node{value: appendValue, next: nil}
+	var newNode = &Node{value: appendValue, next: nil}
 
 	if sl.head == nil {
 		sl.head = newNode
@@ -66,7 +66,7 @@ func (sl *SingleLinkedList) Size() int {
 }
 
 func (sl *SingleLinkedList) Insert(insertValue int) {
-	var newNode *Node = &Node{value: insertValue, next: nil}
+	var newNode = &Node{value: insertValue, next: nil}
 
 	newNode.next = sl.head
 	sl.head = newNode
@@ -98,7 +98,7 @@ func (sl *SingleLinkedList) RemoveElement(target int) {
 }
 
 func (sl *SingleLinkedList) RemoveElements(target int) {
-	var current *Node = sl.head
+	var current = sl.head
 	var previous *Node = nil
 
 	for {
@@ -184,7 +184,7 @@ func (sl *SingleLinkedList) reverseEven(head *Node, previous *Node) *Node {
 }
 
 func (sl *SingleLinkedList) SortMyself() {
-	var current *Node = sl.head
+	var current = sl.head
 
 	for {
 		if current == nil {

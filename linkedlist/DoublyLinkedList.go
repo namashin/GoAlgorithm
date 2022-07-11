@@ -20,13 +20,13 @@ func NewDoublyLInkedList() *DoublyLinkedList {
 }
 
 func (dl *DoublyLinkedList) Append(appendValue int) {
-	var newNode *DoublyNode = &DoublyNode{value: appendValue, next: nil, prev: nil}
+	var newNode = &DoublyNode{value: appendValue, next: nil, prev: nil}
 	if dl.head == nil {
 		dl.head = newNode
 		return
 	}
 
-	var current *DoublyNode = dl.head
+	current := dl.head
 	for {
 		if current.next == nil {
 			break
@@ -39,7 +39,7 @@ func (dl *DoublyLinkedList) Append(appendValue int) {
 }
 
 func (dl *DoublyLinkedList) Print() {
-	var current *DoublyNode = dl.head
+	current := dl.head
 	for {
 		if current == nil {
 			break
@@ -51,7 +51,7 @@ func (dl *DoublyLinkedList) Print() {
 }
 
 func (dl *DoublyLinkedList) Insert(insertValue int) {
-	var newNode *DoublyNode = &DoublyNode{value: insertValue, prev: nil, next: nil}
+	var newNode = &DoublyNode{value: insertValue, prev: nil, next: nil}
 	if dl.head == nil {
 		dl.head = newNode
 		return
@@ -63,7 +63,7 @@ func (dl *DoublyLinkedList) Insert(insertValue int) {
 }
 
 func (dl DoublyLinkedList) Size() int {
-	var current *DoublyNode = dl.head
+	current := dl.head
 	size := 0
 	for {
 		if current == nil {
@@ -76,7 +76,7 @@ func (dl DoublyLinkedList) Size() int {
 }
 
 func (dl *DoublyLinkedList) ReverseIterative() {
-	var current *DoublyNode = dl.head
+	current := dl.head
 	var previous *DoublyNode = nil
 
 	for {
