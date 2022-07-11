@@ -51,7 +51,7 @@ func (sl SingleLinkedList) Print() {
 
 func (sl *SingleLinkedList) Size() int {
 	size := 0
-	var current *Node = sl.head
+	current := sl.head
 
 	for {
 		if current == nil {
@@ -73,7 +73,7 @@ func (sl *SingleLinkedList) Insert(insertValue int) {
 }
 
 func (sl *SingleLinkedList) RemoveElement(target int) {
-	var current *Node = sl.head
+	current := sl.head
 	var previous *Node = nil
 
 	for {
@@ -123,7 +123,7 @@ func (sl *SingleLinkedList) RemoveElements(target int) {
 
 func (sl *SingleLinkedList) ReverseIterative() {
 	var previous *Node = nil
-	var current *Node = sl.head
+	current := sl.head
 
 	for {
 		if current == nil {
