@@ -156,6 +156,33 @@ func (sl *SingleLinkedList) reverseRecursive(current *Node, previous *Node) *Nod
 
 }
 
+func (sl *SingleLinkedList) ReverseEven() {
+	sl.head = sl.reverseEven(sl.head, nil)
+}
+
+func (sl *SingleLinkedList) reverseEven(head *Node, previous *Node) *Node {
+	if head == nil {
+		return head
+	}
+
+	current := head
+	for (current != nil) && (current.value%2 == 0) {
+		nextNode := current.next
+		current.next = previous
+		previous = current
+		current = nextNode
+	}
+
+	if current != head {
+		head.next = current
+		sl.reverseEven(current, nil)
+		return previous
+	} else {
+		head.next = sl.reverseEven(head.next, head)
+		return head
+	}
+}
+
 func (sl *SingleLinkedList) SortMyself() {
 	var current *Node = sl.head
 

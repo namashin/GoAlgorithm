@@ -224,3 +224,28 @@ func TestSingleLinkedList_Size(t *testing.T) {
 	// watch values
 	l.Print()
 }
+
+func TestSingleLinkedList_ReverseEven(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+	l.Append(6)
+	l.Append(2)
+	l.Append(4)
+	l.Append(5)
+	l.Append(8)
+	l.Append(10)
+
+	// Execution
+	l.ReverseEven()
+
+	// Test
+	assert.Equal(t, 4, l.head.value)
+	assert.Equal(t, 2, l.head.next.value)
+	assert.Equal(t, 6, l.head.next.next.value)
+	assert.Equal(t, 5, l.head.next.next.next.value)
+	assert.Equal(t, 10, l.head.next.next.next.next.value)
+	assert.Equal(t, 8, l.head.next.next.next.next.next.value)
+
+	// watch values
+	l.Print()
+}
