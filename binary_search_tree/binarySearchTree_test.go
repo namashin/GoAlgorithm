@@ -1,6 +1,7 @@
 package binary_search_tree
 
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -251,7 +252,7 @@ func TestBinarySearchTree_SumOfLeftLeaves(t *testing.T) {
 	assert.Equal(t, 9, bst.SumOfLeftLeaves())
 }
 
-func TestBinarySearchTree_AllTreePaths(t *testing.T) {
+func TestBinarySearchTree_AllElements(t *testing.T) {
 	// Init
 	bst := NewBinarySearchTree()
 
@@ -264,10 +265,12 @@ func TestBinarySearchTree_AllTreePaths(t *testing.T) {
 
 	// Execution
 	got := bst.AllElements()
+	want := []int{6, 4, 2, 9, 7, 10}
+	fmt.Println(got)
 
 	// Test
 	for i, value := range got {
-		if value != got[i] {
+		if value != want[i] {
 			t.Fail()
 		}
 	}
@@ -275,4 +278,29 @@ func TestBinarySearchTree_AllTreePaths(t *testing.T) {
 	if len(got) != 6 {
 		t.Fail()
 	}
+}
+
+func TestBinarySearchTree_LevelOrder(t *testing.T) {
+	// Init
+	bst := NewBinarySearchTree()
+
+	bst.Insert(6)
+	bst.Insert(4)
+	bst.Insert(9)
+	bst.Insert(7)
+	bst.Insert(2)
+	bst.Insert(10)
+	bst.Insert(1)
+	bst.Insert(3)
+	bst.Insert(8)
+	bst.Insert(13)
+	bst.Insert(15)
+
+	// Execution
+	got := bst.LevelOrder()
+	want := [][]int{{6}, {4, 9}, {2, 7, 10}, {1, 3, 8, 13}, {15}}
+
+	// Test
+	assert.Equal(t, want, got)
+
 }

@@ -2,6 +2,7 @@ package binary_search_tree
 
 import (
 	"fmt"
+
 	"math"
 )
 
@@ -204,4 +205,35 @@ func allElements(node *Node, elements *[]int) {
 
 	allElements(node.left, elements)
 	allElements(node.right, elements)
+}
+
+func (bst *binarySearchTree) LevelOrder() [][]int {
+	current := bst.root
+
+	queue := []*Node{current}
+	var result [][]int
+
+	for len(queue) != 0 {
+		var currentLayer []int
+		size := len(queue)
+
+		for i := 0; i < size; i++ {
+			// 先頭のノードを取得
+			node := queue[0]
+			// 取得したノードを削除。
+			queue = append(queue[:0], queue[1:]...)
+
+			if node.left != nil {
+				queue = append(queue, node.left)
+			}
+
+			if node.right != nil {
+				queue = append(queue, node.right)
+			}
+
+			currentLayer = append(currentLayer, node.value)
+		}
+		result = append(result, currentLayer)
+	}
+	return result
 }
