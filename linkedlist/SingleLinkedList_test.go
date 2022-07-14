@@ -249,3 +249,70 @@ func TestSingleLinkedList_ReverseEven(t *testing.T) {
 	// watch values
 	l.Print()
 }
+
+func TestSingleLinkedList_MiddleNode(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+	l.Append(6)
+	l.Append(2)
+	l.Append(4)
+
+	l.Append(5)
+
+	l.Append(4)
+	l.Append(2)
+	l.Append(6)
+
+	// Execution
+	got := l.MiddleNode()
+
+	// Test
+	assert.Equal(t, got.value, 5)
+}
+
+func TestSingleLinkedList_IsPalindrome(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+	l.Append(6)
+	l.Append(2)
+	l.Append(4)
+	l.Append(4)
+	l.Append(2)
+	l.Append(6)
+
+	// Execution and Test
+	assert.True(t, l.IsPalindrome())
+
+}
+
+func TestSingleLinkedList_MergeTwoLinkedList(t *testing.T) {
+	// Init
+	l1 := NewSingleLinkedList()
+	l1.Append(3)
+	l1.Append(5)
+	l1.Append(8)
+	l1.Append(9)
+
+	l2 := NewSingleLinkedList()
+	l2.Append(0)
+	l2.Append(2)
+	l2.Append(5)
+	l2.Append(7)
+
+	// Execution
+	l1.MergeTwoLinkedList(l2.head)
+
+	// Test
+	want := []int{0, 2, 3, 5, 5, 7, 8, 9}
+	head := l1.head
+	for _, value := range want {
+		if head.value != value {
+			t.Error("正しくマージソートされてません")
+		}
+		head = head.next
+	}
+
+	// Watch Values
+	l1.Print()
+
+}

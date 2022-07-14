@@ -2,6 +2,7 @@ package linkedlist
 
 import (
 	"fmt"
+	"reflect"
 )
 
 type Node struct {
@@ -203,4 +204,69 @@ func (sl *SingleLinkedList) SortMyself() {
 		}
 		current = current.next
 	}
+}
+
+func (sl *SingleLinkedList) MiddleNode() *Node {
+	slow := sl.head
+	fast := sl.head
+
+	for (fast != nil) && (fast.next != nil) {
+		slow = slow.next
+		fast = fast.next.next
+	}
+	return slow
+}
+
+func ReverseSlice(input []int) []int {
+	inputLen := len(input)
+	output := make([]int, inputLen)
+
+	for i, n := range input {
+		j := inputLen - i - 1
+
+		output[j] = n
+	}
+
+	return output
+}
+
+func (sl *SingleLinkedList) IsPalindrome() bool {
+	var nodeValues []int
+	current := sl.head
+	for current != nil {
+		nodeValues = append(nodeValues, current.value)
+		current = current.next
+	}
+	reversedNodeValues := ReverseSlice(nodeValues)
+
+	return reflect.DeepEqual(nodeValues, reversedNodeValues)
+}
+
+func (sl *SingleLinkedList) MergeTwoLinkedList(head *Node) {
+	current1 := sl.head
+	current2 := head
+
+	result := NewSingleLinkedList()
+
+	for (current1 != nil) && (current2 != nil) {
+		if current1.value < current2.value {
+			result.Append(current1.value)
+			current1 = current1.next
+		} else {
+			result.Append(current2.value)
+			current2 = current2.next
+		}
+	}
+
+	for current1 != nil {
+		result.Append(current1.value)
+		current1 = current1.next
+	}
+
+	for current2 != nil {
+		result.Append(current2.value)
+		current2 = current2.next
+	}
+
+	sl.head = result.head
 }
