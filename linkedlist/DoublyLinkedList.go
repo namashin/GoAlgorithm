@@ -13,7 +13,7 @@ type DoublyLinkedList struct {
 	head *DoublyNode
 }
 
-func NewDoublyLInkedList() *DoublyLinkedList {
+func NewDoublyLinkedList() *DoublyLinkedList {
 	return &DoublyLinkedList{
 		head: nil,
 	}
@@ -108,5 +108,47 @@ func (dl *DoublyLinkedList) reverseRecursive(current *DoublyNode, previous *Doub
 	current = nextNode
 
 	return dl.reverseRecursive(current, previous)
+
+}
+
+func (dl *DoublyLinkedList) RemoveNthNodeFromHead(n int) {
+	size := dl.Size()
+	if n == 1 {
+		dl.head = dl.head.next
+		return
+	} else if (n <= 0) || (size < n) {
+		return
+	}
+
+	var previous *DoublyNode = nil
+	current := dl.head
+
+	for i := 1; i < n; i++ {
+		previous = current
+		current = current.next
+	}
+
+	previous.next = current.next
+
+}
+
+func (dl *DoublyLinkedList) RemoveNthNodeFromEnd(n int) {
+	size := dl.Size()
+	if n == size {
+		dl.head = dl.head.next
+		return
+	} else if (size < n) || (n <= 0) {
+		return
+	}
+
+	nthFromHead := size - n
+	var previous *DoublyNode = nil
+	current := dl.head
+	for i := 0; i < nthFromHead; i++ {
+		previous = current
+		current = current.next
+	}
+
+	previous.next = current.next
 
 }

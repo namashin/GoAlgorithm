@@ -7,7 +7,7 @@ import (
 
 func TestDoublyLinkedList_Append(t *testing.T) {
 	// Init
-	dll := NewDoublyLInkedList()
+	dll := NewDoublyLinkedList()
 
 	// Execution
 	dll.Append(5)
@@ -33,7 +33,7 @@ func TestDoublyLinkedList_Append(t *testing.T) {
 
 func TestDoublyLinkedList_Insert(t *testing.T) {
 	// Init
-	dll := NewDoublyLInkedList()
+	dll := NewDoublyLinkedList()
 	dll.Append(5)
 	dll.Append(2)
 	dll.Append(8)
@@ -63,7 +63,7 @@ func TestDoublyLinkedList_Insert(t *testing.T) {
 
 func TestDoublyLinkedList_Size(t *testing.T) {
 	// Init
-	dll := NewDoublyLInkedList()
+	dll := NewDoublyLinkedList()
 	dll.Append(5)
 	dll.Append(2)
 	dll.Append(8)
@@ -81,7 +81,7 @@ func TestDoublyLinkedList_Size(t *testing.T) {
 
 func TestDoublyLinkedList_ReverseIterative(t *testing.T) {
 	// Init
-	dll := NewDoublyLInkedList()
+	dll := NewDoublyLinkedList()
 	dll.Append(5)
 	dll.Append(2)
 	dll.Append(8)
@@ -104,7 +104,7 @@ func TestDoublyLinkedList_ReverseIterative(t *testing.T) {
 
 func TestDoublyLinkedList_ReverseRecursive(t *testing.T) {
 	// Init
-	dll := NewDoublyLInkedList()
+	dll := NewDoublyLinkedList()
 	dll.Append(5)
 	dll.Append(2)
 	dll.Append(8)
@@ -123,4 +123,40 @@ func TestDoublyLinkedList_ReverseRecursive(t *testing.T) {
 
 	// watch values
 	dll.Print()
+}
+
+func TestDoublyLinkedList_RemoveNthNodeFromHead(t *testing.T) {
+	// Init
+	dll := NewDoublyLinkedList()
+
+	dll.Append(5)
+	dll.Append(2)
+	dll.Append(8)
+	dll.Append(6)
+	dll.Append(1)
+
+	// Execution
+	dll.RemoveNthNodeFromHead(1)
+
+	// Test
+	dll.Print()
+
+}
+
+func TestDoublyLinkedList_RemoveNthNodeFromEnd(t *testing.T) {
+	// Init
+	dll := NewDoublyLinkedList()
+
+	dll.Append(5)
+	dll.Append(2)
+	dll.Append(8)
+	dll.Append(6)
+	dll.Append(1)
+
+	// Execution
+	dll.RemoveNthNodeFromEnd(3)
+
+	// Test
+	dll.Print()
+
 }
