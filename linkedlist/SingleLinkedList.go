@@ -270,3 +270,45 @@ func (sl *SingleLinkedList) MergeTwoLinkedList(head *Node) {
 
 	sl.head = result.head
 }
+
+func (sl *SingleLinkedList) RemoveNthNodeFromEnd(n int) {
+	size := sl.Size()
+	if size == n {
+		sl.head = sl.head.next
+		return
+	} else if n < 0 {
+		return
+	} else if size < n {
+		return
+	}
+
+	nthFromHead := size - n
+	var previous *Node = nil
+	current := sl.head
+	for i := 0; i < nthFromHead; i++ {
+		previous = current
+		current = current.next
+	}
+
+	previous.next = current.next
+}
+
+func (sl *SingleLinkedList) RemoveNthNodeFromHead(n int) {
+	size := sl.Size()
+
+	if n == 1 {
+		sl.head = sl.head.next
+		return
+	} else if (size < n) || (sl.head == nil) || (n <= 0) {
+		return
+	}
+
+	var previous *Node = nil
+	current := sl.head
+	for i := 1; i < n; i++ {
+		previous = current
+		current = current.next
+	}
+
+	previous.next = current.next
+}

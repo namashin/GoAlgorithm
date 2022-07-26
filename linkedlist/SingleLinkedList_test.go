@@ -316,3 +316,234 @@ func TestSingleLinkedList_MergeTwoLinkedList(t *testing.T) {
 	l1.Print()
 
 }
+
+func TestSingleLinkedList_RemoveNthNodeFromEnd_first(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+
+	l.Append(4)
+	l.Append(1)
+	l.Append(2)
+	l.Append(7)
+	l.Append(5)
+
+	// Execution
+	l.RemoveNthNodeFromEnd(1)
+
+	// Test
+
+	// delete first element
+	current := l.head
+	want := []int{4, 1, 2, 7}
+	for _, value := range want {
+		if current.value != value {
+			t.Fail()
+		}
+		current = current.next
+	}
+
+	size := l.Size()
+	if size != len(want) {
+		t.Fail()
+	}
+
+	// Check
+	l.Print()
+}
+
+func TestSingleLinkedList_RemoveNthNodeFromEnd_middle(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+
+	l.Append(4)
+	l.Append(1)
+	l.Append(2)
+	l.Append(7)
+	l.Append(5)
+
+	// Execution
+	l.RemoveNthNodeFromEnd(3)
+
+	// Test
+
+	// delete first element
+	current := l.head
+	want := []int{4, 1, 7, 5}
+	for _, value := range want {
+		if current.value != value {
+			t.Fail()
+		}
+		current = current.next
+	}
+
+	size := l.Size()
+	if size != len(want) {
+		t.Fail()
+	}
+
+	// Check
+	l.Print()
+}
+
+func TestSingleLinkedList_RemoveNthNodeFromEnd_last(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+
+	l.Append(4)
+	l.Append(1)
+	l.Append(2)
+	l.Append(7)
+	l.Append(5)
+
+	// Execution
+	l.RemoveNthNodeFromEnd(5)
+
+	// Test
+
+	// delete first element
+	current := l.head
+	want := []int{1, 2, 7, 5}
+	for _, value := range want {
+		if current.value != value {
+			t.Fail()
+		}
+		current = current.next
+	}
+
+	size := l.Size()
+	if size != len(want) {
+		t.Fail()
+	}
+
+	// Check
+	l.Print()
+}
+
+func TestSingleLinkedList_RemoveNthNodeFromHead_first(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+
+	l.Append(4)
+	l.Append(1)
+	l.Append(2)
+	l.Append(7)
+	l.Append(5)
+
+	// Execution
+	l.RemoveNthNodeFromHead(1)
+
+	// Test
+	current := l.head
+	want := []int{1, 2, 7, 5}
+	for _, value := range want {
+		if current.value != value {
+			t.Fail()
+		}
+		current = current.next
+	}
+
+	size := l.Size()
+	if size != len(want) {
+		t.Fail()
+	}
+
+	// check
+	l.Print()
+}
+
+func TestSingleLinkedList_RemoveNthNodeFromHead_middle(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+
+	l.Append(4)
+	l.Append(1)
+	l.Append(2)
+	l.Append(7)
+	l.Append(5)
+
+	// Execution
+	l.RemoveNthNodeFromHead(3)
+
+	// Test
+	current := l.head
+	want := []int{4, 1, 7, 5}
+	for _, value := range want {
+		if current.value != value {
+			t.Fail()
+		}
+		current = current.next
+	}
+
+	size := l.Size()
+	if size != len(want) {
+		t.Fail()
+	}
+
+	// check
+	l.Print()
+}
+
+func TestSingleLinkedList_RemoveNthNodeFromHead_last(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+
+	l.Append(4)
+	l.Append(1)
+	l.Append(2)
+	l.Append(7)
+	l.Append(5)
+
+	// Execution
+	l.RemoveNthNodeFromHead(5)
+
+	// Test
+	current := l.head
+	want := []int{4, 1, 2, 7}
+	for _, value := range want {
+		if current.value != value {
+			t.Fail()
+		}
+		current = current.next
+	}
+
+	size := l.Size()
+	if size != len(want) {
+		t.Fail()
+	}
+
+	// check
+	l.Print()
+}
+
+func TestSingleLinkedList_RemoveNthNodeFromHead_edge_case(t *testing.T) {
+	// Init
+	l := NewSingleLinkedList()
+
+	l.Append(4)
+	l.Append(1)
+	l.Append(2)
+	l.Append(7)
+	l.Append(5)
+
+	// Execution
+	l.RemoveNthNodeFromHead(0)
+	l.RemoveNthNodeFromHead(9)
+
+	// Test
+	current := l.head
+	want := []int{4, 1, 2, 7, 5}
+	for _, value := range want {
+		if current.value != value {
+			t.Fail()
+		}
+		current = current.next
+	}
+
+	size := l.Size()
+	if size != len(want) {
+		t.Fail()
+	}
+
+	// check
+	l.Print()
+}
